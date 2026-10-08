@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trade | Zero Trade</title>
+    <meta name="description" content="Zero Trade is a paper trading app for virtual stock, crypto, futures, options, and global market practice." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">T</div>
+          <div>
+            <p class="eyebrow" data-i18n="brandTag">Zero Trade</p>
+            <h1 data-i18n="appName">Trade</h1>
+          </div>
+        </div>
+
+        <nav class="topnav">
+          <a href="#overview" data-i18n="navOverview">Overview</a>
+          <a href="#markets" data-i18n="navMarkets">Markets</a>
+          <a href="#portfolio" data-i18n="navPortfolio">Portfolio</a>
+          <a href="#learn" data-i18n="navLearn">Learn</a>
+        </nav>
+
+        <div class="top-actions">
+          <label class="language-switcher">
+            <span>🌐</span>
+            <select id="languageSelect" aria-label="Select language">
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="kn">ಕನ್ನಡ</option>
+            </select>
+          </label>
+          <button class="secondary-btn" id="topupBtn" data-i18n="addFund">Add ₹1,00,000</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="overview">
+          <div class="hero-card main-balance">
+            <div>
+              <p class="muted" data-i18n="virtualBalance">Virtual Balance</p>
+              <h2 id="cashValue">₹3,00,000</h2>
+            </div>
+            <div class="balance-meta">
+              <span class="tag success" id="pnlTag">+₹0</span>
+              <p class="muted" data-i18n="accountStatus">Practice mode active</p>
+            </div>
+          </div>
+
+          <div class="hero-card mini-stat">
+            <p class="muted" data-i18n="portfolioValue">Portfolio Value</p>
+            <h3 id="portfolioValue">₹3,00,000</h3>
+            <small id="portfolioChange">0.00% today</small>
+          </div>
+
+          <div class="hero-card mini-stat">
+            <p class="muted" data-i18n="vitality">Account Energy</p>
+            <h3>93%</h3>
+            <small data-i18n="riskSummary">Balanced risk profile</small>
+          </div>
+        </section>
+
+        <section class="market-panel" id="markets">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow" data-i18n="marketOverview">Market overview</p>
+              <h2 data-i18n="featureTitle">Trade across global markets</h2>
+            </div>
+            <div class="tabs" id="marketTabs">
+              <button class="tab active" data-filter="all">All</button>
+              <button class="tab" data-filter="equity">Equity</button>
+              <button class="tab" data-filter="intraday">Intraday</button>
+              <button class="tab" data-filter="fno">F&O</button>
+              <button class="tab" data-filter="crypto">Crypto</button>
+              <button class="tab" data-filter="global">Global</button>
+            </div>
+          </div>
+
+          <div class="market-grid" id="marketGrid"></div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel trade-panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow" data-i18n="tradeDesk">Trade desk</p>
+                <h2 data-i18n="orderTicket">Order ticket</h2>
+              </div>
+            </div>
+
+            <form id="tradeForm" class="trade-form">
+              <label>
+                <span data-i18n="asset">Asset</span>
+                <select id="assetSelect"></select>
+              </label>
+
+              <label>
+                <span data-i18n="quantity">Quantity</span>
+                <input id="quantityInput" type="number" min="1" value="10" />
+              </label>
+
+              <label>
+                <span data-i18n="orderType">Order type</span>
+                <select id="orderType">
+                  <option value="market" data-i18n="marketOrder">Market</option>
+                  <option value="limit" data-i18n="limitOrder">Limit</option>
+                </select>
+              </label>
+
+              <div class="action-row">
+                <button type="button" class="buy-btn" id="buyBtn" data-i18n="buyNow">Buy</button>
+                <button type="button" class="sell-btn" id="sellBtn" data-i18n="sellNow">Sell</button>
+              </div>
+            </form>
+
+            <div class="trade-summary">
+              <div>
+                <p class="muted" data-i18n="estimatedValue">Estimated value</p>
+                <h4 id="orderValue">₹0</h4>
+              </div>
+              <div>
+                <p class="muted" data-i18n="availableCash">Available cash</p>
+                <h4 id="availableCash">₹3,00,000</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel watch-panel">
+            <div class="panel-header compact">
+              <div>
+                <p class="eyebrow" data-i18n="watchlist">Watchlist</p>
+                <h2 data-i18n="pricePulse">Price pulse</h2>
+              </div>
+            </div>
+            <div id="watchlist" class="watchlist"></div>
+          </div>
+        </section>
+
+        <section class="portfolio-panel panel" id="portfolio">
+          <div class="panel-header compact">
+            <div>
+              <p class="eyebrow" data-i18n="portfolioSection">Portfolio</p>
+              <h2 data-i18n="holdingsTitle">Holdings</h2>
+            </div>
+          </div>
+
+          <div class="portfolio-layout">
+            <div class="portfolio-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="symbol">Symbol</th>
+                    <th data-i18n="qty">Qty</th>
+                    <th data-i18n="avgPrice">Avg Price</th>
+                    <th data-i18n="ltp">LTP</th>
+                    <th data-i18n="value">Value</th>
+                    <th data-i18n="pnl">P&L</th>
+                  </tr>
+                </thead>
+                <tbody id="portfolioRows"></tbody>
+              </table>
+            </div>
+
+            <aside class="side-stack">
+              <div class="info-card accent">
+                <p class="muted" data-i18n="profitLoss">Profit / Loss</p>
+                <h3 id="pnlValue">₹0</h3>
+              </div>
+
+              <div class="info-card">
+                <p class="muted" data-i18n="donationTitle">Support learning & health</p>
+                <button class="secondary-btn wide" id="donateBtn" data-i18n="donateNow">Donate</button>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="learn-panel panel" id="learn">
+          <div class="panel-header compact">
+            <div>
+              <p class="eyebrow" data-i18n="education">Education</p>
+              <h2 data-i18n="learningHub">Learning hub</h2>
+            </div>
+          </div>
+
+          <div id="learnGrid" class="learn-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
+            
